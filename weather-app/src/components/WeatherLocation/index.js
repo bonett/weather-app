@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress'
 import Location from './Location';
 import WeatherData from './WeatherData';
-import { SUN } from './../../constants/weather';
-import { API_WEATHER } from './../../constants/config';
+import API_WEATHER from './../../constants/config';
 import transformWeather from './../../services/transformWeather';
 import './styles.css';
 
@@ -11,15 +11,15 @@ class WeatherLocation extends Component {
     constructor() {
         super();
         this.state = {
-            city: 'Alemania',
-            data: {
-                temperature: 10,
-                weatherState: SUN,
-                humidity: 10,
-                wind: '10 m/s'
-            }
+            city: 'London,UK',
+            data: null
         }
     }
+
+    componentDidMount() {
+        this.hanleUpdateClick();
+    }
+    
 
     hanleUpdateClick = () => {
         fetch(API_WEATHER)
@@ -38,8 +38,7 @@ class WeatherLocation extends Component {
         return (
             <div className="weather_location_content">
                 <Location city={city} />
-                <WeatherData data={data} />
-                <button onClick={this.hanleUpdateClick}>Actualizar</button>
+                { data ? <WeatherData data={data} /> : <CircularProgress size={50}/> }
             </div>
         )
     }
