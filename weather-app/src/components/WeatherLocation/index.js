@@ -1,36 +1,40 @@
 import React, { Component } from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress'
+import PropTypes from 'prop-types';
 import Location from './Location';
 import WeatherData from './WeatherData';
-import {
-    SUN, CLOUD
-} from './../../constants/weather';
+import getUrlWeatherByCity from './../../services/getUrlWeatherByCity'
+import transformWeather from './../../services/transformWeather';
 import './styles.css';
 
 class WeatherLocation extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        const { city } = props;
         this.state = {
-            city: 'Alemania',
-            data: {
-                temperature: 10,
-                weatherState: SUN,
-                humidity: 10,
-                wind: '10 m/s'
-            }
+            city,
+            data: null
         }
     }
 
+    componentDidMount() {
+        this.hanleUpdateClick();
+    }
+    
+
     hanleUpdateClick = () => {
-        this.setState({
-            city: 'Colombia',
-            data: {
-                temperature: 30,
-                weatherState: CLOUD,
-                humidity: 30,
-                wind: '20 m/s'
-            }
-        })
+        const { city } = this.state;
+        const api_weather = getUrlWeatherByCity(city)
+        fetch(api_weather)
+        .then(resolve => {
+            return resolve.json()
+        }).then(data => {
+            const newWeather = transformWeather(data);
+            this.setState({
+                data: newWeather
+            });
+        });
     }
 
     render() {
@@ -38,11 +42,14 @@ class WeatherLocation extends Component {
         return (
             <div className="weather_location_content">
                 <Location city={city} />
-                <WeatherData data={data} />
-                <button onClick={this.hanleUpdateClick}>Actualizar</button>
+                { data ? <WeatherData data={data} /> : <CircularProgress size={50}/> }
             </div>
         )
     }
+}
+
+WeatherLocation.propTypes = {
+    city: PropTypes.string.isRequired,
 }
 
 export default WeatherLocation;
