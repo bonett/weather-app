@@ -1,6 +1,6 @@
 import React from 'react';
 import WeatherIcons from 'react-weathericons';
-import PropTypes, { number } from 'prop-types';
+import PropTypes from 'prop-types';
 import {
     CLOUD,
     CLOUDY,
