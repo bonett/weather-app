@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import convert from 'convert-units';
 import Location from './Location';
 import WeatherData from './WeatherData';
 import { SUN } from './../../constants/weather';
-import { LOCATION, API_KEY, URL_BASE } from './../../constants/config';
+import { API_WEATHER } from './../../constants/config';
+import transformWeather from './../../services/transformWeather';
 import './styles.css';
-
-const api_weather = `${URL_BASE}?q=${LOCATION}&APPID=${API_KEY}`;
 
 class WeatherLocation extends Component {
 
@@ -23,36 +21,12 @@ class WeatherLocation extends Component {
         }
     }
 
-    getTemp = kelvin => {
-        return Number(convert(kelvin).from("K").to("C").toFixed(2));
-    }
-
-    getWeatherState = weather_data => {
-        return SUN;
-    }
-
-    getData = weather_data => {
-        const { humidity, temp } = weather_data.main;
-        const { speed } = weather_data.wind;
-        const weatherState = this.getWeatherState(weather_data);
-        const temperature = this.getTemp(temp)
-
-        const data = {
-            humidity,
-            weatherState,
-            temperature,
-            wind: `${speed} m/s`
-        }
-
-        return data;
-    }
-
     hanleUpdateClick = () => {
-        fetch(api_weather)
+        fetch(API_WEATHER)
         .then(resolve => {
             return resolve.json()
         }).then(data => {
-            const newWeather = this.getData(data);
+            const newWeather = transformWeather(data);
             this.setState({
                 data: newWeather
             });
