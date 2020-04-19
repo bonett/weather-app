@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import convert from 'convert-units';
 import Location from './Location';
 import WeatherData from './WeatherData';
-import {
-    SUN, CLOUD
-} from './../../constants/weather';
+import { SUN } from './../../constants/weather';
+import { LOCATION, API_KEY, URL_BASE } from './../../constants/config';
 import './styles.css';
+
+const api_weather = `${URL_BASE}?q=${LOCATION}&APPID=${API_KEY}`;
 
 class WeatherLocation extends Component {
 
@@ -21,16 +23,40 @@ class WeatherLocation extends Component {
         }
     }
 
+    getTemp = kelvin => {
+        return Number(convert(kelvin).from("K").to("C").toFixed(2));
+    }
+
+    getWeatherState = weather_data => {
+        return SUN;
+    }
+
+    getData = weather_data => {
+        const { humidity, temp } = weather_data.main;
+        const { speed } = weather_data.wind;
+        const weatherState = this.getWeatherState(weather_data);
+        const temperature = this.getTemp(temp)
+
+        const data = {
+            humidity,
+            weatherState,
+            temperature,
+            wind: `${speed} m/s`
+        }
+
+        return data;
+    }
+
     hanleUpdateClick = () => {
-        this.setState({
-            city: 'Colombia',
-            data: {
-                temperature: 30,
-                weatherState: CLOUD,
-                humidity: 30,
-                wind: '20 m/s'
-            }
-        })
+        fetch(api_weather)
+        .then(resolve => {
+            return resolve.json()
+        }).then(data => {
+            const newWeather = this.getData(data);
+            this.setState({
+                data: newWeather
+            });
+        });
     }
 
     render() {
