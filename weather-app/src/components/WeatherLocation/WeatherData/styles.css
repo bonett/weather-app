@@ -1,9 +1,11 @@
 .weather__data__content {
     background-color: rgba(200, 200, 200, 0.5);
+    box-sizing: border-box;
     border-radius: 6px;
     line-height: 100px;
     height: 100px;
-    width: 400px;
+    padding: 5px;
+    width: 100%;
 }
 
 .weather_extra_info {
@@ -19,7 +21,7 @@
 }
 
 .temperature {
-    font-size: 30px;
+    font-size: 28px;
     font-weight: bold;
     padding-left: 20px;
     color: #333333;

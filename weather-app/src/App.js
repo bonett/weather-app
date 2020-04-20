@@ -1,30 +1,11 @@
 import React, { Component } from 'react';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import AppBar from '@material-ui/core/AppBar';
+import Typography from '@material-ui/core/Typography';
+import Toolbar from '@material-ui/core/Toolbar';
+import { Row, Col } from 'react-flexbox-grid';
 import LocationList from './components/LocationList';
 import './App.css';
-
-const theme = createMuiTheme({
-  pallete: {
-     primary: {
-      "50": "#21412a",
-      "100": "#21412a",
-      "200": "#21412a",
-      "300": "#21412a",
-      "400": "#21412a",
-      "500": "#21412a",
-      "600": "#21412a",
-      "700": "#21412a",
-      "800": "#21412a",
-      "900": "#21412a",
-      "A100": "#21412a",
-      "A200": "#21412a",
-      "A400": "#21412a",
-      "A700": "#21412a",
-      "contrastDefaultColor": "light"
-    }
-
-  },
-});
 
 const cities = [
   "Medellin,col",
@@ -43,11 +24,29 @@ class App extends Component {
 
   render() {
     return (
-      <MuiThemeProvider theme={theme}>
-        <div className="App">
-          <LocationList cities={cities} onSelectedLocation={this.handleSelectedLocation} />
-        </div>
-      </MuiThemeProvider>
+       <div>
+          <Row>
+          <AppBar position="sticky">
+            <Toolbar>
+              <Typography variant="h6" color="inherit">
+                Weather App
+                </Typography>
+            </Toolbar>
+          </AppBar>
+        </Row>
+        <Row>
+          <Col xs={12} md={6}>
+            <LocationList cities={cities} onSelectedLocation={this.handleSelectedLocation} />
+          </Col>
+          <Col xs={12} md={6}>
+            <Paper elevation={4}>
+              <div className="details">
+                Details
+              </div>
+            </Paper>
+          </Col>
+        </Row>
+       </div>
     );
   }
 }
