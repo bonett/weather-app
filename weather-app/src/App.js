@@ -6,6 +6,31 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { Row, Col } from 'react-flexbox-grid';
 import LocationList from './components/LocationList';
 import './App.css';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
+import ForecastExtended from './components/ForecastExtended';
+
+const theme = createMuiTheme({
+  pallete: {
+     primary: {
+      "50": "#21412a",
+      "100": "#21412a",
+      "200": "#21412a",
+      "300": "#21412a",
+      "400": "#21412a",
+      "500": "#21412a",
+      "600": "#21412a",
+      "700": "#21412a",
+      "800": "#21412a",
+      "900": "#21412a",
+      "A100": "#21412a",
+      "A200": "#21412a",
+      "A400": "#21412a",
+      "A700": "#21412a",
+      "contrastDefaultColor": "light"
+    }
+
+  },
+});
 
 const cities = [
   "Medellin,col",
@@ -24,8 +49,8 @@ class App extends Component {
 
   render() {
     return (
-       <div>
-          <Row>
+      <MuiThemeProvider theme={theme}>
+        <Row>
           <AppBar position="sticky">
             <Toolbar>
               <Typography variant="h6" color="inherit">
@@ -39,14 +64,12 @@ class App extends Component {
             <LocationList cities={cities} onSelectedLocation={this.handleSelectedLocation} />
           </Col>
           <Col xs={12} md={6}>
-            <Paper elevation={4}>
-              <div className="details">
-                Details
-              </div>
+            <Paper zdepth={4}>
+              <ForecastExtended />
             </Paper>
           </Col>
         </Row>
-       </div>
+      </MuiThemeProvider>
     );
   }
 }

@@ -1,0 +1,7 @@
+@media (max-width: 64em) {
+    .location_list_content {
+        margin-bottom: 20px;
+        max-height: 30vh;
+        overflow: auto;
+    }
+}
