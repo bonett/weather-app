@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
-import { Row, Col, Grid } from 'react-flexbox-grid';
+import { Row, Col } from 'react-flexbox-grid';
 import LocationList from './components/LocationList';
 import ForecastExtended from './components/ForecastExtended';
 import './App.css';
