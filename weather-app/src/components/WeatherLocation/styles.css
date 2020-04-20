@@ -10,16 +10,18 @@
 }
 
 .location_content h1 {
+    color: #666;
     margin: 0;
     white-space: nowrap;
 }
 
 .weather_location_content {
+    border: 1px solid #f7f7f7;
+    border-radius: 8px;
     box-sizing: border-box;
-    box-shadow: 10px 10px 40px -12px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 10px -10px rgba(0, 0, 0, 0.2);
     font-family: 'Roboto', sans-serif;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: 20px 10px;
     min-width: 350px;
     padding: 25px;
     width: calc(100% - 20px);

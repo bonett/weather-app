@@ -1,8 +1,9 @@
 .forecast_title {
-    color: #fff;
+    color: #333;
     padding-bottom: 15px;
     padding-top: 15px;
     text-align: center;
+    text-transform: capitalize;
 }
 
 .location_list_content {
@@ -10,10 +11,28 @@
     overflow: auto;
 }
 
+.loading_info {
+    align-items: center;
+    display: flex;
+    height: 60vh;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.loading_text {
+    color: #949494;
+    font-size: 16px;
+    font-weight: 300;
+}
+
 @media (max-width: 48em) {
     .location_list_content {
         margin-bottom: 20px;
         max-height: 40vh;
         overflow: auto;
+    }
+
+    .loading_info {
+        height: 24vh;
     }
 }

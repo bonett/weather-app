@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { CircularProgress } from '@material-ui/core'
 import ForecastItem from './forecastItem';
 import transformForecast from '../services/transformForecast';
 import { API_KEY, URL_BASE } from './../constants/config';
@@ -45,7 +46,12 @@ class ForecastExtended extends Component {
     }
 
     renderProgress() {
-        return <h3>Cargando Pronóstico extendido ...</h3>
+        return (
+            <div className="loading_info">
+                <CircularProgress disableShrink />
+                <h3 className="loading_text">Cargando Pronóstico extendido ...</h3>
+            </div>
+        )
     }
 
     renderForecastItemDay(forecast) {
