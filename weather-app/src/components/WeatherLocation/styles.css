@@ -1,7 +1,9 @@
 .location_content {
     color: #888888;
+    cursor: pointer;
     height: 35px;
     line-height: 35px;
+    overflow: hidden;
     padding-left: 10px;
     text-align: left;
     width: 100%;
@@ -9,11 +11,16 @@
 
 .location_content h1 {
     margin: 0;
+    white-space: nowrap;
 }
 
 .weather_location_content {
+    box-sizing: border-box;
     box-shadow: 10px 10px 40px -12px rgba(0, 0, 0, 0.75);
     font-family: 'Roboto', sans-serif;
+    margin-left: 10px;
+    margin-right: 10px;
+    min-width: 350px;
     padding: 25px;
-    width: 400px;
+    width: calc(100% - 20px);
 }

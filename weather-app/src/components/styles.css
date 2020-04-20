@@ -1,0 +1,19 @@
+.forecast_title {
+    color: #fff;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    text-align: center;
+}
+
+.location_list_content {
+    max-height: 85vh;
+    overflow: auto;
+}
+
+@media (max-width: 48em) {
+    .location_list_content {
+        margin-bottom: 20px;
+        max-height: 40vh;
+        overflow: auto;
+    }
+}
