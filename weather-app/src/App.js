@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
-import { Row, Col } from 'react-flexbox-grid';
+import { Row, Col, Grid } from 'react-flexbox-grid';
 import LocationList from './components/LocationList';
 import ForecastExtended from './components/ForecastExtended';
 import './App.css';
@@ -61,27 +61,29 @@ class App extends Component {
     const { city } = this.state;
     return (
       <MuiThemeProvider theme={theme}>
-        <Row>
-          <AppBar position="sticky">
-            <Toolbar>
-              <Typography variant="h6" color="inherit">Weather App</Typography>
-            </Toolbar>
-          </AppBar>
-        </Row>
-        <Row>
-          <Col xs={12} md={6}>
-            <LocationList cities={cities} onSelectedLocation={this.handleSelectedLocation} />
-          </Col>
-          <Col xs={12} md={6}>
-            <Paper zdepth={4}>
-              <div className="details">
-                {
-                  city && <ForecastExtended city={city} />
-                }
-              </div>
-            </Paper>
-          </Col>
-        </Row>
+        <Grid>
+          <Row>
+            <AppBar position="sticky">
+              <Toolbar>
+                <Typography variant="h6" color="inherit">Weather App</Typography>
+              </Toolbar>
+            </AppBar>
+          </Row>
+          <Row>
+            <Col xs={12} md={6}>
+              <LocationList cities={cities} onSelectedLocation={this.handleSelectedLocation} />
+            </Col>
+            <Col xs={12} md={6}>
+              <Paper zdepth={4}>
+                <div className="details">
+                  {
+                    city && <ForecastExtended city={city} />
+                  }
+                </div>
+              </Paper>
+            </Col>
+          </Row>
+        </Grid>
       </MuiThemeProvider>
     );
   }

@@ -1,5 +1,6 @@
 .location_content {
     color: #888888;
+    cursor: pointer;
     height: 35px;
     line-height: 35px;
     overflow: hidden;
