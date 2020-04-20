@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import AppBar from '@material-ui/core/AppBar';
@@ -7,6 +8,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { Row, Col } from 'react-flexbox-grid';
 import LocationList from './components/LocationList';
 import ForecastExtended from './components/ForecastExtended';
+import { setCity } from './actions'
 import './App.css';
 
 const theme = createMuiTheme({
@@ -28,7 +30,6 @@ const theme = createMuiTheme({
       "A700": "#21412a",
       "contrastDefaultColor": "light"
     }
-
   },
 });
 
@@ -52,9 +53,9 @@ class App extends Component {
   }
 
   handleSelectedLocation = city => {
-    this.setState({
-      city
-    });
+    this.setState({ city });
+
+    this.props.setCity(city);
   }
 
   render() {
@@ -85,7 +86,7 @@ class App extends Component {
         <Row>
           <Col xs={12} md={12}>
             <div className="footer_content">
-              <p>React Redux - Udemy, Made by Wilfrido Bonett</p>
+              <p>React Redux, Made by Wilfrido Bonett</p>
             </div>
           </Col>
         </Row>
@@ -94,4 +95,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispacthToPropsActions = dispatch => ({
+  setCity: value => dispatch(setCity(value))
+});
+
+const AppConnected = connect(null, mapDispacthToPropsActions)(App);
+
+export default AppConnected;
