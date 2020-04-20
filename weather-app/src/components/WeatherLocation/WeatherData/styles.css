@@ -1,42 +1,52 @@
 .weather__data__content {
-    background-color: rgba(200, 200, 200, 0.5);
+    align-items: center;
+    background-color: rgba(245, 245, 245, 0.5);
     box-sizing: border-box;
     border-radius: 6px;
-    line-height: 100px;
-    height: 100px;
-    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 120px;
+    margin-top: 20px;
+    padding: 5px;    
     width: 100%;
 }
 
 .weather_extra_info {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     line-height: 28px;
     text-align: left;
     width: 40%;
 }
 
 .weather_temperature_content {
-    display: inline-block;
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 30px;
     width: 60%;
 }
 
 .temperature {
-    font-size: 28px;
+    font-size: 40px;
     font-weight: bold;
     padding-left: 20px;
-    color: #333333;
+    color: #777;
 }
 
 .temperature_type {
     font-weight: bold;
-    color: #666666;
+    color: #777;
 }
 
 .extra_info_text {
-    display: block;
-    color: #1535c5;
-    font-size: 16px;
-    font-weight: bold;
+    display: flex;
+    color: #777;
+    font-size: 18px;
+    font-weight: 500;
+    justify-content: center;
+    align-items: center;
 }
 
 .wicon {

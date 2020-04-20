@@ -61,29 +61,34 @@ class App extends Component {
     const { city } = this.state;
     return (
       <MuiThemeProvider theme={theme}>
-        <Grid>
-          <Row>
-            <AppBar position="sticky">
-              <Toolbar>
-                <Typography variant="h6" color="inherit">Weather App</Typography>
-              </Toolbar>
-            </AppBar>
-          </Row>
-          <Row>
-            <Col xs={12} md={6}>
-              <LocationList cities={cities} onSelectedLocation={this.handleSelectedLocation} />
-            </Col>
-            <Col xs={12} md={6}>
-              <Paper zdepth={4}>
-                <div className="details">
-                  {
-                    city && <ForecastExtended city={city} />
-                  }
-                </div>
-              </Paper>
-            </Col>
-          </Row>
-        </Grid>
+        <Row>
+          <AppBar position="sticky">
+            <Toolbar>
+              <Typography variant="h6" color="inherit">Weather App</Typography>
+            </Toolbar>
+          </AppBar>
+        </Row>
+        <Row>
+          <Col xs={12} md={6}>
+            <LocationList cities={cities} onSelectedLocation={this.handleSelectedLocation} />
+          </Col>
+          <Col xs={12} md={6}>
+            <Paper zdepth={4}>
+              <div className="details">
+                {
+                  city && <ForecastExtended city={city} />
+                }
+              </div>
+            </Paper>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12} md={12}>
+            <div className="footer_content">
+              <p>React Redux - Udemy, Made by Wilfrido Bonett</p>
+            </div>
+          </Col>
+        </Row>
       </MuiThemeProvider>
     );
   }
