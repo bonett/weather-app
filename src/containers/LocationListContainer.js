@@ -20,11 +20,10 @@ class LocationListContainer extends Component {
 
 // valido por props los actions como funcion y props
 LocationListContainer.propTypes = {
-    setCity: PropTypes.func.isRequired,
     cities: PropTypes.array.isRequired,
 };
 
-// Dispara acciones y lo hago igual a una variable para acceder
+// Dispara acciones y lo hago igual a una variable para 
 const mapDispacthToProps = dispatch => ({
     dispatchSetCity: value => dispatch(setCity(value))
 });

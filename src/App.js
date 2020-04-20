@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import { Row, Col } from 'react-flexbox-grid';
 import LocationListContainer from './containers/LocationListContainer';
-import ForecastExtended from './components/ForecastExtended';
+import ForecastExtendedContainer from './containers/ForecastExtendedContainer';
 import './App.css';
 
 const theme = createMuiTheme({
@@ -41,17 +41,7 @@ const cities = [
 ];
 
 class App extends Component {
-
-  constructor() {
-    super();
-
-    this.state = {
-      city: null
-    }
-  }
-
   render() {
-    const { city } = this.state;
     return (
       <MuiThemeProvider theme={theme}>
         <Row>
@@ -63,14 +53,12 @@ class App extends Component {
         </Row>
         <Row>
           <Col xs={12} md={6}>
-            <LocationListContainer cities={cities}/>
+            <LocationListContainer cities={cities} />
           </Col>
           <Col xs={12} md={6}>
             <Paper zdepth={4}>
               <div className="details">
-                {
-                  city && <ForecastExtended city={city} />
-                }
+                <ForecastExtendedContainer />
               </div>
             </Paper>
           </Col>
